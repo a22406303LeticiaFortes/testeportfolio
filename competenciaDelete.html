@@ -1,0 +1,13 @@
+{% extends "portfolioPWEB/base.html" %}
+
+{% block content %}
+<div class="delete-box">
+    <h2>⚠️ Apagar Competência</h2>
+    <p>Tens a certeza que queres apagar <strong>"{{ competencia.nome }}"</strong>?</p>
+    <form method="POST" class="delete-form">
+        {% csrf_token %}
+        <button type="submit" class="btn-danger">Sim, apagar</button>
+        <a href="{% url 'competencias' %}" class="btn-cancel">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

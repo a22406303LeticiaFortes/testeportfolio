@@ -1,0 +1,44 @@
+{% extends "portfolioPWEB/base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-text">
+        <span class="hero-label">Informática de Gestão</span>
+        <h1 class="hero-name">Leticia<br>Fortes</h1>
+        <p class="hero-sub">
+            Estudante apaixonada por tecnologia, desenvolvimento web e resolução de problemas com criatividade.
+        </p>
+        <div class="hero-btns">
+            <a href="{% url 'projetos' %}" class="btn btn-primary">Ver Projetos</a>
+            <a href="https://www.linkedin.com/in/atuaconta" target="_blank" class="btn btn-outline">LinkedIn →</a>
+        </div>
+    </div>
+
+    <div class="hero-visual">
+        <div class="hero-blob"></div>
+        <div class="hero-card-stack">
+            <div class="hero-stat-card">
+                <div class="stat-icon red">🚀</div>
+                <div>
+                    <div class="stat-label">Projetos</div>
+                    <div class="stat-value">Portfolio</div>
+                </div>
+            </div>
+            <div class="hero-stat-card">
+                <div class="stat-icon blue">🛠️</div>
+                <div>
+                    <div class="stat-label">Tecnologias</div>
+                    <div class="stat-value">Django · Python</div>
+                </div>
+            </div>
+            <div class="hero-stat-card">
+                <div class="stat-icon green">🎓</div>
+                <div>
+                    <div class="stat-label">Formação</div>
+                    <div class="stat-value">ISCTE · ESPAM</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

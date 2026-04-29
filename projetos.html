@@ -1,0 +1,40 @@
+{% extends "portfolioPWEB/base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <span class="page-tag">Portfólio</span>
+        <h2>Projetos</h2>
+    </div>
+    <a href="{% url 'novo_projeto' %}" class="btn btn-primary">+ Novo Projeto</a>
+</div>
+
+<div class="projects-list">
+    {% for p in projetos %}
+    <div class="project-row">
+        <div class="proj-img">
+            {% if p.imagem %}
+                <img src="{{ p.imagem.url }}" alt="{{ p.titulo }}">
+            {% else %}
+                <span class="no-img">Sem imagem</span>
+            {% endif %}
+        </div>
+        <div class="proj-content">
+            <div class="proj-header">
+                <span class="proj-title">{{ p.titulo }}</span>
+                {% if p.ano %}<span class="proj-year">{{ p.ano }}</span>{% endif %}
+            </div>
+            <p class="proj-desc">{{ p.descricao }}</p>
+            <div class="proj-footer">
+                <a href="{% url 'edita_projeto' p.id %}" class="link-edit">✎ Editar</a>
+                <a href="{% url 'apaga_projeto' p.id %}" class="link-delete">🗑 Apagar</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="empty-state">
+        <p>Ainda não tens projetos. Começa por adicionar o primeiro!</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "portfolioPWEB/base.html" %}
+
+{% block content %}
+<div class="form-page">
+    <div class="page-header" style="margin-bottom: 32px;">
+        <div>
+            <span class="page-tag">Formações</span>
+            <h2>{% if formacao %}Editar{% else %}Nova{% endif %} Formação</h2>
+        </div>
+        <a href="{% url 'formacoes' %}" class="btn btn-outline">← Voltar</a>
+    </div>
+    <div class="form-card">
+        <form method="POST" enctype="multipart/form-data" class="styled-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Guardar Formação</button>
+                <a href="{% url 'formacoes' %}" class="btn-link">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

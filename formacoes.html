@@ -1,0 +1,38 @@
+{% extends "portfolioPWEB/base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <span class="page-tag">Educação</span>
+        <h2>Formações</h2>
+    </div>
+    <a href="{% url 'nova_formacao' %}" class="btn btn-primary">+ Nova Formação</a>
+</div>
+
+<div class="cards-grid">
+    {% for f in formacoes %}
+    <div class="card">
+        {% if f.logotipo %}
+            <img class="card-img" src="{{ f.logotipo.url }}" alt="{{ f.nome }}">
+        {% endif %}
+        <span class="card-subtitle">{{ f.tipo }}</span>
+        <h3 class="card-title">{{ f.nome }}</h3>
+        <p class="card-body" style="font-weight:600; color: var(--accent-2);">{{ f.instituicao }}</p>
+        <p class="card-body">{{ f.data_inicio }} — {{ f.data_fim }}</p>
+        {% if f.competencias.all %}
+        <div class="card-tags">
+            {% for c in f.competencias.all %}
+                <span class="tag">{{ c.nome }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="card-actions">
+            <a href="{% url 'edita_formacao' f.id %}" class="link-edit">✎ Editar</a>
+            <a href="{% url 'apaga_formacao' f.id %}" class="link-delete">🗑 Apagar</a>
+        </div>
+    </div>
+    {% empty %}
+    <div class="empty-state"><p>Ainda não tens formações registadas.</p></div>
+    {% endfor %}
+</div>
+{% endblock %}

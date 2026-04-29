@@ -1,0 +1,23 @@
+{% extends "portfolioPWEB/base.html" %}
+
+{% block content %}
+<div class="form-page">
+    <div class="page-header" style="margin-bottom: 32px;">
+        <div>
+            <span class="page-tag">Tecnologias</span>
+            <h2>{% if tecnologia %}Editar{% else %}Nova{% endif %} Tecnologia</h2>
+        </div>
+        <a href="{% url 'tecnologias' %}" class="btn btn-outline">← Voltar</a>
+    </div>
+    <div class="form-card">
+        <form method="POST" enctype="multipart/form-data" class="glass-form-fields">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="{% url 'tecnologias' %}" class="btn-link">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

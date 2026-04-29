@@ -1,0 +1,27 @@
+{% extends "portfolioPWEB/base.html" %}
+
+{% block content %}
+<div class="form-page">
+    <div class="page-header" style="margin-bottom: 32px;">
+        <div>
+            <span class="page-tag">Projetos</span>
+            <h2>{% if projeto %}Editar{% else %}Novo{% endif %} Projeto</h2>
+        </div>
+        <a href="{% url 'projetos' %}" class="btn btn-outline">← Voltar</a>
+    </div>
+
+    <div class="form-card">
+        <p class="form-desc">Preenche os detalhes para destacar as tuas competências.</p>
+        <form method="POST" enctype="multipart/form-data" class="modern-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    {% if projeto %}Guardar Alterações{% else %}Publicar Projeto{% endif %}
+                </button>
+                <a href="{% url 'projetos' %}" class="btn-link">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

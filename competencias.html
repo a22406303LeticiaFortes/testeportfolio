@@ -1,0 +1,28 @@
+{% extends "portfolioPWEB/base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <span class="page-tag">Habilidades</span>
+        <h2>Competências</h2>
+    </div>
+    <a href="{% url 'nova_competencia' %}" class="btn btn-primary">+ Nova Competência</a>
+</div>
+
+<div class="cards-grid">
+    {% for c in competencias %}
+    <div class="card">
+        <h3 class="card-title">{{ c.nome }}</h3>
+        {% if c.descricao %}
+            <p class="card-body">{{ c.descricao }}</p>
+        {% endif %}
+        <div class="card-actions">
+            <a href="{% url 'edita_competencia' c.id %}" class="link-edit">✎ Editar</a>
+            <a href="{% url 'apaga_competencia' c.id %}" class="link-delete">🗑 Apagar</a>
+        </div>
+    </div>
+    {% empty %}
+    <div class="empty-state"><p>Ainda não tens competências registadas.</p></div>
+    {% endfor %}
+</div>
+{% endblock %}
